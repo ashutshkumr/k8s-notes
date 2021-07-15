@@ -1,4 +1,4 @@
-<p align="center"><img height="50px" src="https://kubernetes.io/images/nav_logo.svg" alt="Kubernetes Icon"></img></p>
+<p align="center"><img height="50px" src="https://kubernetes.io/images/nav_logo2.svg" alt="Kubernetes Icon"></img></p>
 
 ## Overview
 
@@ -49,3 +49,37 @@
   * Inter-Pod - IP is assigned to each pod (`IP-per-pod`) by Container Network Interface (CNI) plugins. e.g. Flannel, Weave, Calico
   * Pod-to-Service
   * External-to-Service - virtual IP address (using `iptables` and `kube-proxy`)
+
+## Deployments
+
+- Cluster configurations: All-in-One Single Node vs N-Master-M-Worker Nodes
+- Tools to setup k8s cluster - Minikube, Kind, K3S, kubeadm, kops
+- `kubectl` can be configured using a `~/.kube/config` file for things like master's address, key/certificate, etc.
+- Host dashboard using `kubectl proxy` (serves http instead of https)
+- Current state vs Desired state of Kubernetes Objects
+- Frequently used Kubernetes Objects:
+  * Pods
+  * ReplicaSets
+  * Deployments
+  * Namespaces
+  * Nodes
+  * etc.
+- Example [deployment file](depa.yml)
+- Frequently used commands
+  ```bash
+  kubectl get nodes
+  kubectl get deployments
+  kubectl get pods
+  
+  kubectl apply -f dep.yaml
+  kubectl delete -f dep.yaml
+
+  kubectl delete pod <podname>
+  kubectl delete pod <deployment-name>
+
+  kubectl --help
+  kubectl <sub-command> --help
+  ```
+- Pods are not self healing in nature and hence usually nested inside Deployment / ReplicaSet
+- **Labels** are custom key-value pairs assigned to k8s objects
+- Controller use **Selectors** to select subset of objects (equality based or set based)
