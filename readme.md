@@ -67,6 +67,9 @@
 - Example [deployment file](depa.yml)
 - Frequently used commands
   ```bash
+  # if using k3s, use this to avoid having to run `sudo kubectl`
+  sudo chown $(id -u):$(id -g) /etc/rancher/k3s/k3s.yaml
+
   kubectl get nodes
   kubectl get deployments
   kubectl get pods
@@ -76,6 +79,9 @@
 
   kubectl delete pod <podname>
   kubectl delete pod <deployment-name>
+
+  kubectl logs <pod name>
+  kubectl exec -it <pod name> /bin/bash
 
   kubectl --help
   kubectl <sub-command> --help
